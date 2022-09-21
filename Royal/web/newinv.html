@@ -1,0 +1,485 @@
+
+<html>
+<body bgcolor='#b3ecec' align='center'>
+<head><title>Create New Invoice</title>
+<style>
+#main {									/* for TURQUOISE overlay */
+	margin-top: 15px;
+	margin-left:20px;
+	margin-right: 20px;
+	background-color: #38B4C1;
+	border-radius: 10px;
+	text-align: center;
+	padding-left: 10px;
+	padding-right:10px;
+	padding-top:0px;
+	color: white;
+	font-family: Calibri;
+}
+
+#nav_bar{
+	border-radius:8px;
+}
+
+#nav_bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #003366;
+  border-radius:8px;
+  font-size: 23px;
+  margin: 0;
+  padding: 0;
+}
+
+#nav_bar li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+}
+
+li a:hover, .dropdown:hover {
+  background-color: #002142;
+}
+
+#nav_bar li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #0084d5;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #003366;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.save{
+	background:    #0084d5;
+	border-radius: 8px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	text-align:    center;
+	text-decoration:none;
+	border:0;
+}
+
+.save:hover{
+	background: #002142;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+#invoiceplace {
+	background-color:#003366;
+	border-radius:8px;
+	color: white;
+	padding: 10px;
+}
+
+.mi_field {
+	width: 17%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.ma_field {
+	width: 33%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.mi_mi_field {
+	width: 12%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+
+.item{
+	width: 10%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+.qty{
+	width: 9%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+#hiddensalerows{
+}
+
+.amt{
+	width: 12%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+#invsidebox{
+	border-radius:8px;
+	width: 50%;
+	position:absolute;
+	bottom:0;
+	right:30;
+}
+
+.ulb {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0084d5;
+  border-radius:8px;
+  font-size: 23px;
+  margin: 0;
+  padding: 0;
+  position:absolute;
+  bottom:-177;
+  right:100;
+}
+
+.alb {
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+}
+
+#invsidebox li a:hover{
+  background-color: #002142;
+}
+.t_field{
+	width: 23%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+
+#win_itemcodes{
+	width: 90%;
+	background-color: #0084d5;
+	color: white;
+	margin-top: 150px;
+	margin-right: 60px;
+	position: absolute;
+	top:0;
+	left: 5%;
+	z-axis: 2;
+	border-radius: 8px;
+}
+
+.close {
+	background:    #e10000;
+	border-radius: 8px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	text-align:    center;
+	text-decoration:none;
+	border:0;
+}
+.close:hover{
+	background: #ff0000;
+	color: #ffffff;
+	cursor: pointer;
+}
+</style></head>
+<div id='main'>
+<h1 style='text-align:left; padding-top:7px; margin-bottom:2px;'>Royal Retailers Pvt. Ltd.</h1>
+<div style='text-align:left;text-size:4px;margin:0px;'>SCO - 24 (1st Floor) <br>
+Rajiv Chowk<br/>New Delhi<br/><br/></div>
+
+<div id='nav_bar'>
+<ul>
+  <li><a href="/portal">Home</a></li>
+  <li class="dropdown">
+   <a href="javascript:void(0)" class="dropbtn">Invoicing</a>
+    <div class="dropdown-content">
+		<a href='/newsale'>Create New Invoice</a>
+		<a href='/showinvoices'>View Invoice List</a>
+		<a href='/editinvoice'>Edit Invoice</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Purchase Center</a>
+    <div class="dropdown-content">
+		<a href='/newpurchase'>Create New Purchase</a>
+		<a href='/showpurchases'>View Purchase List</a>
+		<a href='/editpurchase'>Edit Purchase</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Expenses</a>
+    <div class="dropdown-content">
+		<a href='/newexpense'>Create New Expense</a>
+		<a href='/showexpenses'>View Expenses</a>
+		<a href='/editexpense'>Edit Expenses</a>
+    </div>
+  </li>
+	<li class='navlink'><a href="/stocks">Stock Management</a></li>
+	<li class='navlink' style='float:right;'><a href="/logout">&nbsp;Logout&nbsp;</a></li>
+</ul>
+</div>
+<script type='text/javascript'>
+function cal1() {
+	var x = Number(document.getElementById('tar1').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt1').value =
+	(
+		Number(document.getElementById('q1').value) *
+		Number(document.getElementById('r1').value) *
+		z
+	);
+}
+
+function cal2() {
+	var x = Number(document.getElementById('tar2').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt2').value =
+	(
+		Number(document.getElementById('q2').value) *
+		Number(document.getElementById('r2').value) *
+		z
+	);
+}
+
+function cal3() {
+	var x = Number(document.getElementById('tar3').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt3').value =
+	(
+		Number(document.getElementById('q3').value) *
+		Number(document.getElementById('r3').value) *
+		z
+	);
+}
+
+function cal4() {
+	var x = Number(document.getElementById('tar4').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt4').value =
+	(
+		Number(document.getElementById('q4').value) *
+		Number(document.getElementById('r4').value) *
+		z
+	);
+}
+
+function cal5() {
+	var x = Number(document.getElementById('tar5').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt5').value =
+	(
+		Number(document.getElementById('q5').value) *
+		Number(document.getElementById('r5').value) *
+		z
+	);
+}
+
+function cal6() {
+	var x = Number(document.getElementById('tar6').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt6').value =
+	(
+		Number(document.getElementById('q6').value) *
+		Number(document.getElementById('r6').value) *
+		z
+	);
+}
+
+function cal7() {
+	var x = Number(document.getElementById('tar7').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt7').value =
+	(
+		Number(document.getElementById('q7').value) *
+		Number(document.getElementById('r7').value) *
+		z
+	);
+}
+
+</script>
+<br/>
+<!---#MAIN CONTENT GOES HERE--->
+<!--<div class = 'btn'><a href='/'>Button</a></div>-->
+
+<h1>Create New Invoice</h1><br/>
+<div id='invoiceplace' align='left' style='padding: 15px;'>
+<form action='/newinvsaving' method='POST' id='ivdet'> {%csrf_token%}
+Customer Name: &nbsp;<input type='text' class='mi_field' name='cname' maxlength='20' required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Customer Ph No. : &nbsp;<input type='text' class='mi_field' name='cph' maxlength='10' required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bill No.:&nbsp; <input type='text' class='mi_mi_field' name='bill_no' maxlength='7' required/><br/><br/>
+Place of Supply:&nbsp;&nbsp;&nbsp; <input type='text' class='mi_field' name='pos'maxlength='20' required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Customer Address: &nbsp;&nbsp;<input type='text' class='ma_field' name='cadd' maxlength='100' required/>&nbsp;&nbsp;&nbsp;&nbsp;
+Date:&nbsp;&nbsp; <input type='date' name='bdate'style='border-radius:8px; border: 0; height: 35px; padding-left:5px;' required/><br/>
+&nbsp;<br/><br/>
+
+&nbsp;&nbsp;Item Code: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Qty: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Rate (in Rs.): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Tax Rate(%): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Amount (in Rs.): <br/><br/>
+
+<input type='text' class='item' name='item1' maxlength='7' required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id ='q1' placeholder='0.0' name='qty1' required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id='r1' placeholder='0.0' name='rate1' required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' id='tar1' onblur='cal1();' placeholder='0.0' name='tax1' required/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' onblur="findTotal()" name='amt1' id='amt1' placeholder='0.0'/><br/><br/>
+
+<input type='text' class='item' name='item2' maxlength='7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id ='q2' placeholder='0.0' name='qty2'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id='r2' placeholder='0.0' name='rate2'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' id='tar2' onblur='cal2();' placeholder='0.0' name='tax2'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' name='amt2' onblur="findTotal()" id='amt2' placeholder='0.0'/><br/><br/>
+
+<input type='text' class='item' name='item3' maxlength='7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id ='q3' placeholder='0.0' name='qty3'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id='r3' placeholder='0.0' name='rate3'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' id='tar3' onblur='cal3();' placeholder='0.0' name='tax3'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' name='amt3' onblur="findTotal()" id='amt3' placeholder='0.0'/><br/><br/>
+
+<input type='text' class='item' name='item4' maxlength='7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id ='q4' placeholder='0.0' name='qty4'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id='r4' placeholder='0.0' name='rate4'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' id='tar4' onblur='cal4();' placeholder='0.0' name='tax4'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' name='amt4' onblur="findTotal()" id='amt4' placeholder='0.0'/><br/><br/>
+
+
+<div id='hiddensalerows' style='display:none;'>
+<input type='text' class='item' name='item5' maxlength='7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id ='q5' placeholder='0.0' name='qty5'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id='r5' placeholder='0.0' name='rate5'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' id='tar5' onblur='cal5();' placeholder='0.0' name='tax5'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' name='amt5' onblur="findTotal()" id='amt5' placeholder='0.0'/><br/><br/>
+
+<input type='text' class='item' name='item6' maxlength='7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id ='q6' placeholder='0.0' name='qty6'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id='r6' placeholder='0.0' name='rate6'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' id='tar6' onblur='cal6();' placeholder='0.0' name='tax6'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' name='amt6' onblur="findTotal()" id='amt6' placeholder='0.0'/><br/><br/>
+
+<input type='text' class='item' name='item7' maxlength='7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id ='q7' placeholder='0.0' name='qty7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' id='r7' placeholder='0.0' name='rate7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' id='tar7' onblur='cal7();' placeholder='0.0' name='tax7'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' name='amt7' onblur="findTotal()" id='amt7' placeholder='0.0'/><br/><br/>
+
+</div>
+
+<div>
+<center>
+	<ul class='ulb'>
+	<li><a href='#' class='alb' onclick='w_itemcodes()'>&nbsp;See All Item Codes&nbsp;</li></a>
+	<li><a href='javascript:void(0)' class='alb' id='sbtn' onclick='showRow()'>&nbsp;+ Add More Rows&nbsp;</li></a>
+	<li><a href='javascript:void(0)' class='alb' id='hbtn' onclick='showRow()' style='display:none;'>&nbsp;- Hide Rows&nbsp;</li></a>
+	<li><a href='javascript:void(0)' class='alb'onclick='findTotal()'>&nbsp;Calculate Total&nbsp;</li></a>
+	</ul>
+</center>
+</div>
+
+<br/>
+
+<p align='right'>Total:&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' class='t_field' id='total' placeholder='0.0' name='bill_amt'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+</br>
+<input type='submit' value='Save Invoice' class='save'/></form>
+
+
+    <script type="text/javascript">
+function findTotal(){
+    var arr = document.getElementsByClassName('amt');
+    var tot=0;
+    for(var i=0;i<arr.length;i++){
+        if(parseInt(arr[i].value))
+            tot += parseInt(arr[i].value);
+    }
+    document.getElementById('total').value = tot;
+}
+function showRow() {
+  var x = document.getElementById("hiddensalerows");
+  var y = document.getElementById("hbtn");
+  var z = document.getElementById("sbtn");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+	y.style.display = "block";
+	z.style.display = "none";
+  } else {
+    x.style.display = "none";
+	y.style.display = "none";
+	z.style.display = "block";
+  }
+}
+
+function w_itemcodes() {
+  var a = document.getElementById("win_itemcodes");
+  var b = document.getElementById("main");
+  if (a.style.display === "none") {
+    a.style.display = "block";
+	b.style.opacity = '0.1';
+  } else {
+    a.style.display = "none";
+	b.style.opacity = '1';
+  }
+}
+    </script>
+
+</div>
+</div>
+
+<div id = 'win_itemcodes' style='padding-left:7px; display:none;' align='left'>
+<h3>&nbsp;&nbsp;All Item Codes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span align='right'><a class='close' onclick='w_itemcodes()'>CLOSE WINDOW</a></span></h3>
+<hr color='white'/>
+<iframe src ='/itemcodes' width='98.5%'  scrolling='yes'  style='border-radius:8px; border:0; padding-bottom:3px;' height='300px'></iframe>
+<br/><br/></div>
+<br/><br/>
+
+</body>
+</html>
+
+
+

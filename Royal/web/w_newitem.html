@@ -1,0 +1,84 @@
+
+<html>
+<body bgcolor='#0084d5' align='center'>
+<head>
+<style>
+#main {									/* for TURQUOISE overlay */
+	margin-top: 15px;
+	margin-left:20px;
+	margin-right: 20px;
+	background-color: #0084d5;
+	border-radius: 10px;
+	text-align: center;
+	padding-left: 10px;
+	padding-right:10px;
+	padding-top:0px;
+	color: white;
+	font-family: Calibri;
+}
+
+.save{
+	background:    #0084d5;
+	border-radius: 8px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	text-align:    center;
+	text-decoration:none;
+	border:0;
+}
+
+.save:hover{
+	background: #002142;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+#invoiceplace {
+	background-color:#003366;
+	border-radius:8px;
+	color: white;
+	padding: 10px;
+}
+
+.mi_field {
+	width: 17%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.ma_field {
+	width: 47%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.mi_mi_field {
+	width: 12%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+
+</style></head>
+<div id='main'>
+<!---#MAIN CONTENT GOES HERE--->
+<!--<div class = 'btn'><a href='/'>Button</a></div>-->
+<div id='invoiceplace' align='center' style='padding: 15px;'>
+<form action='/newitemsaving' method='POST' id='ivdet'> {%csrf_token%}
+Item Name: <input type='text' class='mi_field' name='iname'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Item Code : <input type='text' class='mi_field' name='icode' maxlength='6'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Opening Stock: <input type='text' class='mi_field' name='istock' value='0'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</center><br/><br/>
+<input type='submit' value='Create this new item' class='save'/></form>
+<br/><br/>
+</div>
+<br/><br/><br/><br/>
+</body>
+</html>
+
+
+

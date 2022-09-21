@@ -1,0 +1,245 @@
+
+<html>
+<body bgcolor='#b3ecec' align='center'>
+<head><title>Export Invoice</title>
+<style>
+#main {									/* for TURQUOISE overlay */
+	margin-top: 15px;
+	margin-left:20px;
+	margin-right: 20px;
+	background-color: #38B4C1;
+	border-radius: 10px;
+	text-align: center;
+	padding-left: 10px;
+	padding-right:10px;
+	padding-top:0px;
+	color: white;
+	font-family: Calibri;
+}
+
+#nav_bar{
+	border-radius:8px;
+}
+
+#nav_bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #003366;
+  border-radius:8px;
+  font-size: 23px;
+  margin: 0;
+  padding: 0;
+}
+
+#nav_bar li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+}
+
+li a:hover, .dropdown:hover {
+  background-color: #002142;
+}
+
+#nav_bar li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #0084d5;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #003366;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.save{
+	background:    #0084d5;
+	border-radius: 8px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	text-align:    center;
+	text-decoration:none;
+	border:0;
+}
+
+.save:hover{
+	background: #002142;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+#invoiceplace {
+	background-color:#003366;
+	border-radius:8px;
+	color: white;
+	padding: 10px;
+}
+
+.mi_field {
+	width: 17%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.ma_field {
+	width: 33%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.mi_mi_field {
+	width: 12%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+
+.item{
+	width: 15%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+.qty{
+	width: 12%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+.amt{
+	width: 14%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+.t_field{
+	width: 23%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+
+.close {
+	background:    #e10000;
+	border-radius: 8px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	text-align:    center;
+	text-decoration:none;
+	border:0;
+}
+
+.close:hover{
+	background: #ff0000;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+input[readonly] {
+	background-color: #dddddd;
+	color: black;
+	cursor: no-drop;
+}
+</style></head>
+<div id='main'>
+<h1 style='text-align:left; padding-top:7px; margin-bottom:2px;'>Royal Retailers Pvt. Ltd.</h1>
+<div style='text-align:left;text-size:4px;margin:0px;'>SCO - 24 (1st Floor) <br>
+Rajiv Chowk<br/>New Delhi<br/><br/></div>
+
+<div id='nav_bar'>
+<ul>
+  <li><a href="/portal">Home</a></li>
+  <li class="dropdown">
+   <a href="javascript:void(0)" class="dropbtn">Invoicing</a>
+    <div class="dropdown-content">
+		<a href='/newsale'>Create New Invoice</a>
+		<a href='/showinvoices'>View Invoice List</a>
+		<a href='/editinvoice'>Edit Invoice</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Purchase Center</a>
+    <div class="dropdown-content">
+		<a href='/newpurchase'>Create New Purchase</a>
+		<a href='/showpurchases'>View Purchase List</a>
+		<a href='/editpurchase'>Edit Purchase</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Expenses</a>
+    <div class="dropdown-content">
+		<a href='/newexpense'>Create New Expense</a>
+		<a href='/showexpenses'>View Expenses</a>
+		<a href='/editexpense'>Edit Expenses</a>
+    </div>
+  </li>
+	<li class='navlink'><a href="/stocks">Stock Management</a></li>
+	<li class='navlink' style='float:right;'><a href="/logout">&nbsp;Logout&nbsp;</a></li>
+</ul>
+</div>
+<br/>
+<h1>Export Invoice</h1><br/>
+<div id='invoiceplace' align='left' style='padding: 15px;'>
+<form action='/billcreated' method='POST' id='ivdet'> {%csrf_token%}
+Customer Name: &nbsp;<input type='text' class='mi_field' name='cname' maxlength='20' value='ASDV' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Customer Ph No.: &nbsp;<input type='text' class='mi_field' name='cph' maxlength='13' value='1234568900' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bill No.:&nbsp; <input type='text' class='mi_mi_field' name='bill_no' maxlength='7' value='1' readonly/><br/><br/>
+Place of Supply:&nbsp;&nbsp;&nbsp; <input type='text' class='mi_field' name='pos' maxlength='20' value='ATQ' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Customer Address: &nbsp;&nbsp;<input type='text' class='ma_field' name='cadd' maxlength='100' value='PNS' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Date:&nbsp;&nbsp; <input type='text' name='bdate' class = 'mi_mi_field' value='2020-01-22' readonly/><br/>&nbsp;<br/><br/>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Item Code: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qty: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rate (in Rs.): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tax Rate(%): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Amount (in Rs.): <br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' class='item'  name='item1' value='4s16' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='qty1' value='25' onblur='cal1();' id = 'q1' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='rate1' value='100' onblur='cal1();' id = 'r1' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' name='tax1' value='12' onblur='cal1();' id = 'tar1' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' onblur='findTotal()' name='amt1' value='2800' onblur='cal1();' id = 'amt1' readonly/><br/><br/>
+
+
+<br/><br/>
+File Name to save: <input type='text' class='amt' name='filename' placeholder=' without extension' maxlength='10' required/> &nbsp;&nbsp;&nbsp;
+<input type='submit' value='Export This Invoice' class='save'/></form>
+
+</div>
+<br/>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,353 @@
+<html>
+<body bgcolor='#b3ecec' align='center'>
+<head><title>Edit Purchase</title>
+<style>
+#main {									/* for TURQUOISE overlay */
+	margin-top: 15px;
+	margin-left:20px;
+	margin-right: 20px;
+	background-color: #38B4C1;
+	border-radius: 10px;
+	text-align: center;
+	padding-left: 10px;
+	padding-right:10px;
+	padding-top:0px;
+	color: white;
+	font-family: Calibri;
+}
+
+#nav_bar{
+	border-radius:8px;
+}
+
+#nav_bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #003366;
+  border-radius:8px;
+  font-size: 23px;
+  margin: 0;
+  padding: 0;
+}
+
+#nav_bar li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px;
+}
+
+li a:hover, .dropdown:hover {
+  background-color: #002142;
+}
+
+#nav_bar li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #0084d5;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #003366;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.save{
+	background:    #0084d5;
+	border-radius: 8px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	text-align:    center;
+	text-decoration:none;
+	border:0;
+}
+
+.save:hover{
+	background: #002142;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+#invoiceplace {
+	background-color:#003366;
+	border-radius:8px;
+	color: white;
+	padding: 10px;
+}
+
+.mi_field {
+	width: 17%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.ma_field {
+	width: 33%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+.mi_mi_field {
+	width: 12%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+
+.item{
+	width: 15%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+.qty{
+	width: 12%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+.amt{
+	width: 14%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+	margin-left:2px;
+}
+
+.t_field{
+	width: 23%;
+	height: 35px;
+	border-radius: 8px;
+	padding:5px;
+	border:0;
+}
+
+.close {
+	background:    #e10000;
+	border-radius: 8px;
+	padding:       8px 20px;
+	color:         #ffffff;
+	display:       inline-block;
+	text-align:    center;
+	text-decoration:none;
+	border:0;
+}
+
+.close:hover{
+	background: #ff0000;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+input[readonly] {
+	background-color: #dddddd;
+	color: black;
+	cursor: no-drop;
+}
+</style></head>
+<div id='main'>
+<h1 style='text-align:left; padding-top:7px; margin-bottom:2px;'>Royal Retailers Pvt. Ltd.</h1>
+<div style='text-align:left;text-size:4px;margin:0px;'>SCO - 24 (1st Floor) <br>
+Rajiv Chowk<br/>New Delhi<br/><br/></div>
+
+<div id='nav_bar'>
+<ul>
+  <li><a href="/portal">Home</a></li>
+  <li class="dropdown">
+   <a href="javascript:void(0)" class="dropbtn">Invoicing</a>
+    <div class="dropdown-content">
+		<a href='/newsale'>Create New Invoice</a>
+		<a href='/showinvoices'>View Invoice List</a>
+		<a href='/editinvoice'>Edit Invoice</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Purchase Center</a>
+    <div class="dropdown-content">
+		<a href='/newpurchase'>Create New Purchase</a>
+		<a href='/showpurchases'>View Purchase List</a>
+		<a href='/editpurchase'>Edit Purchase</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Expenses</a>
+    <div class="dropdown-content">
+		<a href='/newexpense'>Create New Expense</a>
+		<a href='/showexpenses'>View Expenses</a>
+		<a href='/editexpense'>Edit Expenses</a>
+    </div>
+  </li>
+	<li class='navlink'><a href="/stocks">Stock Management</a></li>
+	<li class='navlink' style='float:right;'><a href="/logout">&nbsp;Logout&nbsp;</a></li>
+</ul>
+</div>
+<br/>
+<h1>Edit Purchase</h1><br/>
+<div id='invoiceplace' align='left' style='padding: 15px;'>
+<form action='/updatepursave' method='POST' id='ivdet'> {%csrf_token%}
+Seller Name: &nbsp;<input type='text' class='mi_field' name='sname' maxlength='20' value='Croma' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Seller Ph No.: &nbsp;<input type='text' class='mi_field' name='sph' maxlength='13' value='9878548455' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Bill No.:&nbsp; <input type='text' class='mi_mi_field' name='bill_no' maxlength='7' value='1203' readonly/><br/><br/>
+Place of Supply:&nbsp;&nbsp;&nbsp; <input type='text' class='mi_field' name='pos' maxlength='20' value='New Delhi' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Seller Address: &nbsp;&nbsp;<input type='text' class='ma_field' name='sadd' maxlength='100' value='2nd Floor,Digital Tower,Noida' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Date:&nbsp;&nbsp; <input type='text' name='bdate' class = 'mi_mi_field' value='2019-10-17' readonly/><br/>&nbsp;<br/><br/>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Item Code: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qty: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rate (in Rs.): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tax Rate(%): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Amount (in Rs.): <br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' class='item'  name='item1' value='7s64' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='qty1' value='5' onblur='cal1();' id = 'q1'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='rate1' value='35000' onblur='cal1();' id = 'r1'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' name='tax1' value='8' onblur='cal1();' id = 'tar1'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' onblur='findTotal()' name='amt1' value='189000' onblur='cal1();' id = 'amt1'/><br/><br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' class='item'  name='item2' value='8p64' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='qty2' value='5' onblur='cal2();' id = 'q2'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='rate2' value='40000' onblur='cal2();' id = 'r2'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' name='tax2' value='8' onblur='cal2();' id = 'tar2'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' onblur='findTotal()' name='amt2' value='216000' onblur='cal2();' id = 'amt2'/><br/><br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' class='item'  name='item3' value='Xr128' readonly/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='qty3' value='5' onblur='cal3();' id = 'q3'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='qty' name='rate3' value='55000' onblur='cal3();' id = 'r3'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='number' class='qty' name='tax3' value='8' onblur='cal3();' id = 'tar3'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='text' class='amt' onblur='findTotal()' name='amt3' value='297000' onblur='cal3();' id = 'amt3'/><br/><br/>
+
+
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class='close' onclick='findTotal()'> Calculate New Total</div>
+<p align='right'>Total:&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' class='t_field' id='total' placeholder='0.0' name='bill_amt'/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+</br>
+<input type='submit' value='Save Purchase' class='save'/></form>
+
+
+    <script type="text/javascript">
+function cal1() {
+	var x = Number(document.getElementById('tar1').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt1').value =
+	(
+		Number(document.getElementById('q1').value) *
+		Number(document.getElementById('r1').value) *
+		z
+	);
+}
+
+function cal2() {
+	var x = Number(document.getElementById('tar2').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt2').value =
+	(
+		Number(document.getElementById('q2').value) *
+		Number(document.getElementById('r2').value) *
+		z
+	);
+}
+
+function cal3() {
+	var x = Number(document.getElementById('tar3').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt3').value =
+	(
+		Number(document.getElementById('q3').value) *
+		Number(document.getElementById('r3').value) *
+		z
+	);
+}
+
+function cal4() {
+	var x = Number(document.getElementById('tar4').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt4').value =
+	(
+		Number(document.getElementById('q4').value) *
+		Number(document.getElementById('r4').value) *
+		z
+	);
+}
+
+function cal5() {
+	var x = Number(document.getElementById('tar5').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt5').value =
+	(
+		Number(document.getElementById('q5').value) *
+		Number(document.getElementById('r5').value) *
+		z
+	);
+}
+
+function cal6() {
+	var x = Number(document.getElementById('tar6').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt6').value =
+	(
+		Number(document.getElementById('q6').value) *
+		Number(document.getElementById('r6').value) *
+		z
+	);
+}
+
+function cal7() {
+	var x = Number(document.getElementById('tar7').value);
+	var y = x + 100;
+	var z = y / 100;
+	document.getElementById('amt7').value =
+	(
+		Number(document.getElementById('q7').value) *
+		Number(document.getElementById('r7').value) *
+		z
+	);
+}
+
+function findTotal(){
+    var arr = document.getElementsByClassName('amt');
+    var tot=0;
+    for(var i=0;i<arr.length;i++){
+        if(parseInt(arr[i].value))
+            tot += parseInt(arr[i].value);
+    }
+    document.getElementById('total').value = tot;
+}
+    </script>
+
+</div>
+</div>
+</body>
+</html>
